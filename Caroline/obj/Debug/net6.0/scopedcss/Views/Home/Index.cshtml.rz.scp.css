@@ -1,0 +1,20 @@
+.display-4[b-080uahol1w]{
+    margin-bottom: 0.3in;
+}
+.card[b-080uahol1w]{
+    display: contents;
+    align-items: center;
+    border: none;
+    width: max-content;
+}
+
+.card .japanese[b-080uahol1w]{
+    word-wrap: break-word;
+    background-color: #fff;
+    font-size: 1in;
+}
+
+.card .english[b-080uahol1w]{
+    display: none;
+    font-size: 0.3in;
+}
