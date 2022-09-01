@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Caroline.Models;
 
@@ -14,6 +10,6 @@ namespace Caroline.Data
         {
         }
 
-        public DbSet<Caroline.Models.Symbol> Symbol { get; set; } = default!;
+        public DbSet<Symbol> Symbol { get; set; } = default!;
     }
 }
