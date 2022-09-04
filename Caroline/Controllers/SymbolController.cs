@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Caroline.Data;
+using Caroline.Extensions;
 using Caroline.Models;
 
 namespace Caroline.Controllers
@@ -150,16 +151,18 @@ namespace Caroline.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetRandomSymbol()
+        [HttpPost]
+        public async Task<IActionResult> GetRandomSymbol(SearchOptions option)
         {
             var random = new Random();
             var symbols = await _context.Symbol.ToListAsync();
             var randomIndex = random.Next(0, symbols.Count);
             var randomSymbol = symbols[randomIndex];
-            return RedirectToAction("RandomIndex", "Home", randomSymbol);
+            var symbolViewModel = new SymbolViewModel(){Symbol = randomSymbol, Option = option};
+            TempData.Put("symbolViewModel", symbolViewModel);
+            return RedirectToAction("Random", "Home");
         }
-
+        
         private bool SymbolExists(int id)
         {
           return (_context.Symbol?.Any(e => e.Id == id)).GetValueOrDefault();

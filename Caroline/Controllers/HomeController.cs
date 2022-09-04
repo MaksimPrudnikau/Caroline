@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Caroline.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Caroline.Models;
 
@@ -18,9 +19,9 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult RandomIndex(Symbol symbol)
+    public IActionResult Random()
     {
-        return View(nameof(Index), symbol);
+        return View(TempData.Get<SymbolViewModel>("symbolViewModel"));
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

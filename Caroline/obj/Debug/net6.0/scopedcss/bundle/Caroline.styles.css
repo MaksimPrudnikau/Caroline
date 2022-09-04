@@ -2,20 +2,21 @@
 .display-4[b-080uahol1w]{
     margin-bottom: 0.3in;
 }
-.card[b-080uahol1w]{
+/* _content/Caroline/Views/Home/Random.cshtml.rz.scp.css */
+.card[b-07af62pjhz]{
     display: contents;
     align-items: center;
     border: none;
     width: max-content;
 }
 
-.card .japanese[b-080uahol1w]{
+.card .japanese[b-07af62pjhz]{
     word-wrap: break-word;
     background-color: #fff;
     font-size: 1in;
 }
 
-.card .english[b-080uahol1w]{
+.card .english[b-07af62pjhz]{
     display: none;
     font-size: 0.3in;
 }

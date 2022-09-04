@@ -1,23 +1,15 @@
-﻿@model Caroline.Models.Symbol?
+﻿@model SymbolViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">✨Go little rockstar✨</h1>
-    <form>
-        <button asp-controller="Symbol" asp-action="GetRandomSymbol">Random</button>
+    <h1 class="display-4 test">✨Go little rockstar✨</h1>
+    <form method="post" asp-controller="Symbol" asp-action="GetRandomSymbol">
+        <select asp-for="Option">
+            <option selected="selected">Japan</option>
+            <option>English</option>
+        </select>
+        <button type="submit">Random</button>
     </form>
-    
-    @if (Model is not null)
-    {
-        <div id="symbol" class="card">
-            <div class="japanese">
-                @Model.Japanese
-            </div>
-            <div id="english" class="english">
-                @Model.English
-            </div>
-        </div>
-    }
 </div>

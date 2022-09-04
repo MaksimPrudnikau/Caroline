@@ -1,0 +1,33 @@
+﻿@model SymbolViewModel
+@{
+    var symbol = Model.Symbol;
+    Tuple<string, string> card = Model.Option switch{
+        SearchOptions.English => new(symbol.English, symbol.Japanese),
+        SearchOptions.Japan => new(symbol.Japanese, symbol.English),
+        _ => throw new ArgumentOutOfRangeException()
+        };
+    var option = Model.Option;
+    var optionsList = Enum.GetValues(typeof(SearchOptions))
+        .Cast<SearchOptions>()
+        .Select(v => new SelectListItem {Text = v.ToString(), Value = ((int)v).ToString() })
+        .ToList();
+}
+<div class="text-center">
+    <h1 class="display-4 test">✨Go little rockstar✨</h1>
+    <form method="post" asp-controller="Symbol" asp-action="GetRandomSymbol">
+        @Html.DropDownListFor(m => m.Option, optionsList)
+        
+        
+        
+        <button type="submit">Random</button>
+    </form>
+
+    <div id="symbol" class="card">
+        <div class="japanese">
+            @card.Item1
+        </div>
+        <div id="english" class="english">
+            @card.Item2
+        </div>
+    </div>
+</div>

@@ -1,20 +1,3 @@
 ﻿.display-4{
     margin-bottom: 0.3in;
 }
-.card{
-    display: contents;
-    align-items: center;
-    border: none;
-    width: max-content;
-}
-
-.card .japanese{
-    word-wrap: break-word;
-    background-color: #fff;
-    font-size: 1in;
-}
-
-.card .english{
-    display: none;
-    font-size: 0.3in;
-}
