@@ -7,13 +7,6 @@ namespace Caroline.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
     public IActionResult Index()
     {
         return View();
@@ -21,7 +14,10 @@ public class HomeController : Controller
 
     public IActionResult Random()
     {
-        return View(TempData.Get<SymbolViewModel>("symbolViewModel"));
+        var symbolViewModel = TempData.Get<SymbolViewModel>("symbolViewModel");
+        return symbolViewModel is null 
+            ? RedirectToAction(nameof(Index)) 
+            : View(symbolViewModel);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

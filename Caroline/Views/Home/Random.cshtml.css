@@ -1,17 +1,21 @@
 ﻿.card{
-    display: contents;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
     border: none;
-    width: max-content;
 }
 
 .card .japanese{
-    word-wrap: break-word;
+    padding-right: 0.1in;
+    width: 50%;
+    border-right: 1px solid black;
     background-color: #fff;
     font-size: 1in;
 }
 
 .card .english{
-    display: none;
-    font-size: 0.3in;
+    visibility: hidden;
+    padding-left: 0.1in;
+    width: 50%;
+    font-size: 0.2in;
 }

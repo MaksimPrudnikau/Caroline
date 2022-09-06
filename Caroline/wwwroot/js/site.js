@@ -1,6 +1,11 @@
 ﻿$(document).ready(function(){
-    $("#symbol").click(function(){
+    $("#symbol").click(function() {
         const english = $("#english");
-        english.toggle();
+        if (english.css('visibility') === 'hidden') {
+            english.css({'visibility': 'visible'});
+        } else
+        {
+            english.css({'visibility': 'hidden'});
+        }
     });
 });

@@ -1,4 +1,5 @@
-﻿namespace Caroline.Models;
+﻿
+namespace Caroline.Models;
 
 public class Symbol
 {

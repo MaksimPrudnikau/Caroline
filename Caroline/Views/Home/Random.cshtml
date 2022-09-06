@@ -6,24 +6,29 @@
         SearchOptions.Japan => new(symbol.Japanese, symbol.English),
         _ => throw new ArgumentOutOfRangeException()
         };
-    var option = Model.Option;
     var optionsList = Enum.GetValues(typeof(SearchOptions))
         .Cast<SearchOptions>()
         .Select(v => new SelectListItem {Text = v.ToString(), Value = ((int)v).ToString() })
         .ToList();
+
+    const double maximumFontSize = 1d;
+    const double minimumFontSize = 0.4;
+    const double decreaseStep = 0.2;
+    var fontSize = maximumFontSize;
+    for (var i = 0; i < card.Item1.Length && fontSize > minimumFontSize; ++i)
+    {
+        fontSize -= decreaseStep;
+    }
 }
 <div class="text-center">
     <h1 class="display-4 test">✨Go little rockstar✨</h1>
-    <form method="post" asp-controller="Symbol" asp-action="GetRandomSymbol">
+    <form class="form" method="post" asp-controller="Symbol" asp-action="GetRandomSymbol" style="margin-bottom: 0.3in;">
         @Html.DropDownListFor(m => m.Option, optionsList)
-        
-        
-        
-        <button type="submit">Random</button>
+        <button class="btn btn-secondary" type="submit">Random</button>
     </form>
 
-    <div id="symbol" class="card">
-        <div class="japanese">
+    <div id="symbol" class="card align-content-center">
+        <div class="japanese" style="font-size: @(fontSize)in">
             @card.Item1
         </div>
         <div id="english" class="english">

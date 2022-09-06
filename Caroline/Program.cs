@@ -1,11 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Caroline.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SymbolContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DataSource") ?? throw new InvalidOperationException("Connection string 'DataSource' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+
 
 var app = builder.Build();
 
